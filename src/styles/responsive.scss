@@ -1,0 +1,35 @@
+@media screen and (min-width: 576px) {
+  header {
+    nav {
+      .hamburger {
+        display: none;
+      }
+      nav-list {
+        margin-top: 0;
+        width: fit-content;
+        display: inherit;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    gap: 3rem;
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+  }
+  .restaurant {
+    grid-template-columns: repeat(auto-fit, minmax(16.5em, 1fr));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .jumbotron {
+    min-width: 1000px;
+  }
+}
