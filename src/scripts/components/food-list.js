@@ -1,11 +1,11 @@
-import '../../data/food-data.js'
+// import "../data/food-data.js";
 
 class Food extends HTMLElement {
   connectedCallback() {
-    this.render()
+    this.render();
   }
 
   render() {}
 }
 
-customElements.define('food-list', Food)
+customElements.define("food-list", Food);

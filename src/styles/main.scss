@@ -1,9 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Joan&family=Satisfy&family=Tiro+Devanagari+Sanskrit:ital@1&display=swap");
-$text-shadow: 0 0 10px #fff,
-0 0 20px #fff,
-0 0 40px #fff,
-0 0 60px #fff;
-$color-text: #3b7792;
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Joan&family=Poppins:wght@300&family=Satisfy&family=Tiro+Devanagari+Sanskrit:ital@1&display=swap");
+$teal-color: #3b7792;
+$white-color: #fff;
+$black-color: #000;
+$body-color: #ebebeb;
+$text-shadow: 0 0 10px $white-color,
+0 0 20px $white-color,
+0 0 40px $white-color,
+0 0 60px $white-color;
+@import "_skip-content.scss";
+@import "_loader.scss";
+@import "_navbar.scss";
+@import "_jumbotron.scss";
+@import "_restaurant.scss";
+@import "_restaurant-detail.scss";
+@import "_restaurant-favorite.scss";
+@import "_footer.scss";
 * {
   margin: 0;
   padding: 0;
@@ -12,222 +23,22 @@ $color-text: #3b7792;
 }
 
 body {
-  background-color: #e6e6e6;
+  background-color: $body-color;
   font-family: "Joan", serif;
-}
-
-.loader {
-  margin: 5em auto;
-  border: 0 solid transparent;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  &::before,
-  &::after {
-    content: "";
-    border: 7px solid #ccc;
-    border-radius: 50%;
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    animation: loader 2s linear infinite;
-    opacity: 0;
-  }
-  &::before {
-    animation-delay: 1s;
-  }
-}
-
-.skip-to-content {
-  border: 0.25em solid #b0e2ff;
-  border-radius: 3rem;
-  padding: 1rem 2rem;
-  color: #fff;
-  text-shadow: 0 0 10px #fff;
-  position: fixed;
-  background-color: #6b6b6b;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: top 0.5s ease;
-  z-index: 999;
-  &:focus {
-    top: 10px;
-    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.5);
-    outline: #000 solid 1px;
-  }
-}
-
-header {
-  border-end-end-radius: 3em;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  background-color: rgba($color: #fff, $alpha: 0.8);
-  box-shadow: 0 -10px 20px rgba($color: #000000, $alpha: 0.5);
-  z-index: 99;
-  nav {
-    margin: 0 auto;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    h1 {
-      font-size: 2.5rem;
-      font-family: "Dancing Script", cursive;
-    }
-    .hamburger {
-      min-width: 44px;
-      min-height: 44px;
-      font-size: 2em;
-      text-align: center;
-    }
-    nav-list {
-      margin-top: 1rem;
-      width: 100%;
-      display: none;
-      gap: 1ex;
-      font-size: 1.2rem;
-      .nav-item {
-        padding: 1ex 2ex;
-        display: block;
-        transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-        &:hover {
-          border-radius: 1.5rem 0;
-          background-color: rgba($color: #000000, $alpha: 0.3);
-        }
-        &:focus {
-          outline: red solid 1px;
-        }
-      }
-    }
-  }
-}
-
-.jumbotron {
-  border-start-start-radius: 3rem;
-  width: 100%;
-  height: 80vh;
-  background: url("/images/heros/hero-image_3.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  font-family: "Satisfy", cursive;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  animation: shadow 3s ease-in-out infinite alternate;
-  z-index: -9;
-  h1 {
-    color: $color-text;
-    font-size: 3rem;
-    text-align: center;
-  }
-  p {
-    margin: 0 1ex;
-    color: $color-text;
-    font-weight: bold;
-    font-size: calc(2rem - 1.5pt);
-    line-height: 2pc;
-    text-align: center;
-  }
+  min-height: 100vh;
 }
 
 #main-content {
-  margin: 2rem auto;
-  padding-top: 5rem;
-  max-width: 1200px;
+  min-height: 80vh;
   h1 {
     text-align: center;
-  }
-}
-
-.restaurant {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-  gap: 2rem;
-  ristorante-list {
-    border-radius: 1.5rem;
-    background: linear-gradient(145deg, #d7d7d7, #b5b5b5);
-    box-shadow: 7px 7px 10px rgba($color: #000000, $alpha: 0.1), -7px -7px 10px rgba($color: #fff, $alpha: 0.5);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    &:hover {
-      transform: translate(-2ex, 2ex) scale(1.05);
-      box-shadow: 10px 10px 5px 2px rgba($color: #000000, $alpha: 0.1), -10px -10px 5px 2px rgba($color: #fff, $alpha: 0.5);
-    }
-    img {
-      border-radius: 1.5em;
-      padding: 1ex;
-      width: 100%;
-      height: 30vh;
-      object-fit: cover;
-    }
-    .details {
-      h2 {
-        font-size: 1.35rem;
-      }
-      .rating {
-        margin-top: 1rem;
-        margin-bottom: 1ex;
-        display: flex;
-        justify-content: space-between;
-        h4 {
-          font-size: 1.15rem;
-          img {
-            font-size: 0.5em;
-          }
-        }
-        span {
-          color: #ffff38;
-        }
-      }
-      p {
-        margin-bottom: 1rem;
-        border-top: 3px double black;
-        padding-top: 1ex;
-        text-align: justify;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        line-clamp: 5;
-        -webkit-line-clamp: 5;
-      }
-    }
-  }
-}
-
-.food {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-  gap: 2rem;
-  food-list {
-    border-radius: 1.5em;
-    background-color: #fff;
-    img {
-      border-radius: 1.5em;
-      padding: 1ex;
-      width: 100%;
-      height: 20vh;
-      object-fit: cover;
-    }
-    h2 {
-      font-size: 1.25rem;
-      text-transform: capitalize;
-    }
   }
 }
 
 footer {
-  border-start-start-radius: 3em;
-  background-color: rgba($color: #303533, $alpha: 0.5);
-  color: #fff;
-  font-family: "Tiro Devanagari Sanskrit", serif;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1rem;
+  a {
+    &:hover {
+      color: aqua;
+    }
+  }
 }
