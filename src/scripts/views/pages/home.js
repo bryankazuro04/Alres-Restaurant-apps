@@ -11,14 +11,15 @@ const Home = {
       <section class="jumbotron">
         <h1>Welcome to Alres</h1>
         <p>We serve delicious and quality food and drinks</p>
-      </section>
-      
-      <div class="loader-wrapper">
-        <div class="loader"></div>
-      </div>
-
+       </section>
+        
       <div class="main-container">
         <h1 class="mb1 p1">Explore Restaurant</h1>
+        
+        <div class="loader-wrapper">
+          <div class="loader"></div>
+        </div>
+
         <section class="restaurant px-2"></section>
 
         <h1 class="mt2 mb1 p1">Foods</h1>        
