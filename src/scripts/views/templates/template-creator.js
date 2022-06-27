@@ -41,7 +41,7 @@ const createRestaurantDetailTemplate = (resto) => `
     <img src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" alt="${resto.name}">
   </div>
 
-  <div class="restaurant__container-detail">
+  <div class="restaurant__container-detail" tabindex="0">
     <div class="detail__header">
       <h2>${resto.name}</h2>
 
@@ -78,7 +78,7 @@ const createRestaurantDetailTemplate = (resto) => `
 `;
 
 const createMenuTemplate = (menu) => `
-  <section class="menu__container-foods">
+  <section class="menu__container-foods" tabindex="0">
     <h3>Foods</h3>
 
     <div>
@@ -86,7 +86,7 @@ const createMenuTemplate = (menu) => `
     </div>
   </section>
 
-  <section class="menu__container-drinks">
+  <section class="menu__container-drinks" tabindex="0">
     <h3>Drinks</h3>
 
     <div>
@@ -111,13 +111,13 @@ const createLoaderTemplate = () => `
 `;
 
 const createLikeButtonTemplate = () => `
-  <button id="likeButton" class="like" aria-label="like this movie" >
+  <button id="likeButton" class="like" aria-label="like this restaurant" >
     <img src="/icons/heart-regular.svg" alt="Like Icon">
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button id="likeButton" class="like" aria-label="unlike this movie">
+  <button id="likeButton" class="like" aria-label="unlike this restaurant">
     <img src="/icons/heart-solid.svg" alt="Liked Icon">
   </button>
 `;
