@@ -1,0 +1,46 @@
+header {
+  border-end-end-radius: 3em;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: rgba($color: $white-color, $alpha: 0.8);
+  box-shadow: 0 -10px 20px rgba($color: $black-color, $alpha: 0.5);
+  z-index: 99;
+  nav {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    h1 {
+      font-size: 2.5rem;
+      font-family: "Dancing Script", cursive;
+    }
+    .hamburger {
+      min-width: 44px;
+      min-height: 44px;
+      font-size: 2em;
+      text-align: center;
+    }
+    nav-list {
+      margin-top: 1rem;
+      width: 100%;
+      display: none;
+      gap: 1ex;
+      font-size: 1.2rem;
+      .nav-item {
+        padding: 1.1ex 2ex;
+        display: block;
+        transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        &:hover {
+          border-radius: 1.5rem 0;
+          background-color: rgba($color: $black-color, $alpha: 0.3);
+        }
+        &:focus-visible {
+          outline: red solid 1px;
+        }
+      }
+    }
+  }
+}

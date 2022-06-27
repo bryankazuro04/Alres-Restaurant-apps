@@ -1,0 +1,21 @@
+.loader {
+  margin: 5em auto;
+  border: 0 solid transparent;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  &::before,
+  &::after {
+    content: "";
+    border: 7px solid #ccc;
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    animation: loader 2s linear infinite;
+    opacity: 0;
+  }
+  &::before {
+    animation-delay: 1s;
+  }
+}

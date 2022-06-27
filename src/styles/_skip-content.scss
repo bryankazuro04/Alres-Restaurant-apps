@@ -1,0 +1,19 @@
+.skip-to-content {
+  border: 0.25em solid #b0e2ff;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
+  color: $white-color;
+  text-shadow: 0 0 10px $white-color;
+  position: fixed;
+  background-color: #6b6b6b;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.5s ease;
+  z-index: 999;
+  &:focus {
+    top: 10px;
+    box-shadow: 0 0 10px rgba($color: $black-color, $alpha: 0.5);
+    outline: $black-color solid 1px;
+  }
+}

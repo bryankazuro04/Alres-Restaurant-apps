@@ -4,13 +4,14 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 50px;
-  background-color: rgba($color: #000000, $alpha: .6);
+  background-color: rgba($color: #000000, $alpha: 0.6);
   &:hover {
     background-color: #333;
   }
 }
 
 ::-webkit-scrollbar-track {
+  border-radius: 10px;
   background-color: #fff;
 }
 
@@ -45,6 +46,10 @@ ul {
   padding: 1em;
 }
 
+.p2 {
+  padding: 2em;
+}
+
 .px-1 {
   padding-right: 1em;
   padding-left: 1em;
@@ -53,4 +58,14 @@ ul {
 .px-2 {
   padding-right: 2em;
   padding-left: 2em;
+}
+
+.failed-load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2;
+  .failed-alert {
+    color: red;
+  }
 }

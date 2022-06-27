@@ -1,6 +1,18 @@
-const hamburger = document.querySelector(".hamburger");
-const navList = document.querySelector("nav-list");
+import "./components/nav-item";
+import App from "./views/app";
+import swRegister from "./utils/sw-register";
 
-hamburger.addEventListener("click", () => {
-  navList.classList.toggle("show");
+const app = new App({
+  button: document.querySelector(".hamburger"),
+  drawer: document.querySelector(".drawer"),
+  content: document.querySelector("#main-content"),
+});
+
+window.addEventListener("hashchange", () => {
+  app.renderPage();
+});
+
+window.addEventListener("load", () => {
+  app.renderPage();
+  swRegister();
 });

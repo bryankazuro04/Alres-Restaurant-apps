@@ -6,6 +6,8 @@
       }
       nav-list {
         margin-top: 0;
+        width: -moz-fit-content;
+        width: -webkit-fit-content;
         width: fit-content;
         display: inherit;
       }
@@ -23,8 +25,33 @@
       font-size: 2rem;
     }
   }
-  .restaurant {
-    grid-template-columns: repeat(auto-fit, minmax(16.5em, 1fr));
+  .main-container {
+    .restaurant {
+      grid-template-columns: repeat(auto-fit, minmax(16.5em, 1fr));
+    }
+    .restaurant__favorite {
+      margin: 0 auto;
+      max-width: inherit;
+      grid-template-columns: repeat(auto-fit, 20em);
+    }
+  }
+  restaurant-detail {
+    .restaurant__container {
+      flex-direction: row;
+      .restaurant__container-detail {
+        flex: 1 50%;
+      }
+    }
+  }
+  review-container {
+    display: flex;
+    .review__container-list,
+    .review__container-form {
+      width: 50%;
+      .review__form {
+        height: 50vh;
+      }
+    }
   }
 }
 
