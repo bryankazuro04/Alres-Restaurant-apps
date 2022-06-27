@@ -20,9 +20,15 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url];
+    const page = routes[url] || routes["/"];
     this._content.innerHTML = await page.render();
     await page.afterRender();
+
+    const skipLinkElem = document.querySelector(".skip-to-content");
+    skipLinkElem.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.querySelector("#main-content").focus();
+    });
   }
 }
 
