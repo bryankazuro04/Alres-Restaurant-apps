@@ -3,9 +3,8 @@ import CONFIG from "../../globals/config";
 const createRestaurantContainerTemplate = (resto) => `
   <ristorante-list tabindex="0">
     <a href="${`#/detail/${resto.id}`}">
-      <img data-src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" alt="${
-  resto.name
-}" class="restaurant-thumbnail lazyload">
+      <img data-src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" 
+      alt="${resto.name}" class="restaurant-thumbnail lazyload">
       
       <div class="details p1 px-2">
         <h2>${resto.name}</h2>
@@ -38,9 +37,8 @@ const createFoodContainerTemplate = (food) => `
 
 const createRestaurantDetailTemplate = (resto) => `
   <div class="restaurant__container-image">
-    <img data-src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" alt="${
-  resto.name
-}" class="lazyload">
+    <img data-src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" 
+    alt="${resto.name}" class="lazyload">
   </div>
 
   <div class="restaurant__container-detail" tabindex="0">
@@ -132,6 +130,46 @@ const createFailedLoadItemTemplate = () => `
 	</div>
 `;
 
+const createSkeletonRestoLoadedTemplate = (skeleton) => {
+  let skeletonContainer = "";
+
+  for (let i = 0; i < skeleton; i += 1) {
+    skeletonContainer += `
+      <ristorante-list>
+        <img src="/icons/image-loader.png" alt="Restaurant loader" class="skeleton restaurant-thumbnail"></img>
+
+        <div class="details p1 px-2">
+          <h2 class="skeleton skeleton__text skeleton__text-header"></h2>
+
+          <div class="details__sub">
+            <div class="details__sub-location skeleton skeleton__text" style="width: 6rem;"></div>
+            
+            <div class="details__sub-rating skeleton skeleton__text" style="width: 4rem;"></div>
+          </div>
+
+          <p class="skeleton skeleton__text skeleton__text-body"></p>
+        </div>
+      </ristorante-list>
+    `;
+  }
+  return skeletonContainer;
+};
+
+const createSkeletonFoodLoadedTemplate = (skeleton) => {
+  let skeletonContainer = "";
+
+  for (let i = 0; i <= skeleton; i += 1) {
+    skeletonContainer += `
+      <food-list>
+        <img src="/icons/image-loader.png" alt="Food Loader" class="skeleton">
+
+        <h2 class="skeleton skeleton__text skeleton__text-header p1 mb1"></h2>
+      </food-list>
+    `;
+  }
+  return skeletonContainer;
+};
+
 export {
   createRestaurantContainerTemplate,
   createFoodContainerTemplate,
@@ -142,4 +180,6 @@ export {
   createLikeButtonTemplate,
   createLikedButtonTemplate,
   createFailedLoadItemTemplate,
+  createSkeletonRestoLoadedTemplate,
+  createSkeletonFoodLoadedTemplate,
 };
