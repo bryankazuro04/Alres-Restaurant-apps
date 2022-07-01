@@ -23,6 +23,9 @@ const Favorite = {
 
     try {
       loader.innerHTML = createLoaderTemplate();
+      if (restoFav.length <= 0) {
+        restoContainer.innerHTML = createFailedLoadItemTemplate();
+      }
       restoFav.forEach((resto) => {
         restoContainer.innerHTML += createRestaurantContainerTemplate(resto);
       });
