@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server --config webpack.dev.js",
+    "start-dev": "node sharp.js && webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js && node sharp.js",
     "test": "karma start",
     "lint": "eslint ./src",
