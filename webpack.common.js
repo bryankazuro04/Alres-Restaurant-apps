@@ -35,6 +35,9 @@ module.exports = {
       patterns: [{
         from: path.resolve(__dirname, "src/public/"),
         to: path.resolve(__dirname, "dist/"),
+        globOptions: {
+          ignore: ["**/images/**"],
+        },
       }, ],
     }),
     new ServiceWorkerWebpackPlugin({
@@ -49,4 +52,27 @@ module.exports = {
       ],
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 20000,
+      maxSize: 2500000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: "~",
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
 };
