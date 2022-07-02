@@ -4,12 +4,18 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozjpeg = require("imagemin-mozjpeg");
+const { GenerateSW } = require("workbox-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/scripts/index.js"),
+  entry: {
+    index: path.resolve(__dirname, "src/scripts/index.js"),
+    event: path.resolve(__dirname, "src/scripts/event.js"),
+    sw: path.resolve(__dirname, "src/scripts/sw.js"),
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [{
@@ -37,9 +43,9 @@ module.exports = {
         to: path.resolve(__dirname, "dist/"),
       }, ],
     }),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.resolve(__dirname, "src/scripts/sw.js"),
-    }),
+    // new ServiceWorkerWebpackPlugin({
+    //   entry: path.resolve(__dirname, "src/scripts/sw.js"),
+    // }),
     new ImageminWebpackPlugin({
       plugins: [
         ImageminMozjpeg({
@@ -48,6 +54,10 @@ module.exports = {
         }),
       ],
     }),
+    new GenerateSW({
+      swDest: "sw.js",
+    }),
+    new BundleAnalyzerPlugin(),
   ],
   optimization: {
     splitChunks: {
