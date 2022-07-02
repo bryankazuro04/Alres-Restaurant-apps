@@ -7,4 +7,3 @@ import "../styles/responsive.scss";
 import "../styles/animation.scss";
 import "./components/restaurants-list.js";
 import "./components/food-list.js";
-import "./Event.js";
