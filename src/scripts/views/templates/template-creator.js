@@ -11,12 +11,12 @@ const createRestaurantContainerTemplate = (resto) => `
         
         <div class="details__sub">
           <div class ="details__sub-location">
-            <img src="/icons/location-dot-solid.svg" alt="Location Icon">
+            <img src="/icons/location-dot-solid.svg" alt="Location Icon" width="44px" height="44px">
             <span>${resto.city}</span>
           </div>
           
           <div class="details__sub-rating">
-            <img src="/icons/star-solid.svg" alt="Rating Icon" class="rating-icon">
+            <img src="/icons/star-solid.svg" alt="Rating Icon" width="44px" height="44px" class="rating-icon">
             <span>${resto.rating}</span>
           </div>
         </div>
@@ -110,13 +110,13 @@ const createLoaderTemplate = () => `
 	<div class="loader"></div>
 `;
 
-const createLikeButtonTemplate = () => `
+const createLikeRestaurantButtonTemplate = () => `
   <button id="likeButton" class="like" aria-label="like this restaurant" >
     <img src="/icons/heart-regular.svg" alt="Like Icon">
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
+const createUnlikeRestaurantButtonTemplate = () => `
   <button id="likeButton" class="like" aria-label="unlike this restaurant">
     <img src="/icons/heart-solid.svg" alt="Liked Icon">
   </button>
@@ -177,8 +177,8 @@ export {
   createMenuTemplate,
   createReviewFormTemplate,
   createLoaderTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createLikeRestaurantButtonTemplate,
+  createUnlikeRestaurantButtonTemplate,
   createFailedLoadItemTemplate,
   createSkeletonRestoLoadedTemplate,
   createSkeletonFoodLoadedTemplate,
