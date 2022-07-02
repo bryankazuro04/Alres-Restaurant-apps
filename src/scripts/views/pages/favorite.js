@@ -8,7 +8,7 @@ import {
 const Favorite = {
   async render() {
     return `
-      <section class="main-container">
+      <section class="main-container favorite-container">
         <h1>Halaman Favorite</h1>
         <div class="loader-wrapper"></div>
         <section class="restaurant__favorite px-2"></section>
@@ -24,7 +24,7 @@ const Favorite = {
     try {
       loader.innerHTML = createLoaderTemplate();
       if (restoFav.length <= 0) {
-        restoContainer.innerHTML = createFailedLoadItemTemplate();
+        restoContainer.innerHTML = "<h1>No restaurant you like yet</h1>";
       }
       restoFav.forEach((resto) => {
         restoContainer.innerHTML += createRestaurantContainerTemplate(resto);
