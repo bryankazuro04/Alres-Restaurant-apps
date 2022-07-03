@@ -7,7 +7,7 @@ import {
   createLoaderTemplate,
   createFailedLoadItemTemplate,
 } from "../templates/template-creator";
-import LikeButtonInitiator from "../../utils/like-button-initiator";
+import LikeButtonPresenter from "../../utils/like-button-presenter";
 import addReviewHelper from "../../utils/add-review-helper";
 
 const Detail = {
@@ -49,7 +49,7 @@ const Detail = {
       restoContainer.innerHTML += createRestaurantDetailTemplate(restaurant);
       menuContainer.innerHTML += createMenuTemplate(restaurant.menus);
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector(".button-like"),
         restaurant: {
           id: restaurant.id,
