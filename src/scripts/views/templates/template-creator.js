@@ -1,13 +1,13 @@
 import CONFIG from "../../globals/config";
 
 const createRestaurantContainerTemplate = (resto) => `
-  <ristorante-list tabindex="0">
-    <a href="${`#/detail/${resto.id}`}">
+  <ristorante-list class="restaurant-list" tabindex="0">
+    <a href="${`#/detail/${resto.id}`}" class="restaurant__link">
       <img data-src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" 
       alt="${resto.name}" class="restaurant-thumbnail lazyload">
       
       <div class="details p1 px-2">
-        <h2>${resto.name}</h2>
+        <h2 class="details__name">${resto.name}</h2>
         
         <div class="details__sub">
           <div class ="details__sub-location">
@@ -43,7 +43,7 @@ const createRestaurantDetailTemplate = (resto) => `
 
   <div class="restaurant__container-detail" tabindex="0">
     <div class="detail__header">
-      <h2>${resto.name}</h2>
+      <h2 class="details__name">${resto.name}</h2>
 
       <section class="button-like"></section>
     </div>  
