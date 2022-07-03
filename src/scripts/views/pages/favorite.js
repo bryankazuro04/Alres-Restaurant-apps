@@ -9,7 +9,7 @@ const Favorite = {
   async render() {
     return `
       <section class="main-container favorite-container">
-        <h1>Halaman Favorite</h1>
+        <h1 class="no-restaurant-favorite">Favorite Restaurant</h1>
         <div class="loader-wrapper"></div>
         <section class="restaurant__favorite px-2"></section>
       </section>
@@ -20,11 +20,12 @@ const Favorite = {
     const loader = document.querySelector(".loader-wrapper");
     const restoFav = await FavoriteRestaurantDB.getAllResto();
     const restoContainer = document.querySelector(".restaurant__favorite");
+    const emptyRestaurant = document.querySelector(".no-restaurant-favorite");
 
     try {
       loader.innerHTML = createLoaderTemplate();
       if (restoFav.length <= 0) {
-        restoContainer.innerHTML = "<h1>No restaurant you like yet</h1>";
+        emptyRestaurant.innerHTML = "No restaurant you like yet";
       }
       restoFav.forEach((resto) => {
         restoContainer.innerHTML += createRestaurantContainerTemplate(resto);
