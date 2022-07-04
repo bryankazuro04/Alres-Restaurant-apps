@@ -4,9 +4,8 @@ import { setCacheNameDetails } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { cleanupOutdatedCaches, precacheAndRoute } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate, NetworkFirst } from "workbox-strategies";
+import { StaleWhileRevalidate } from "workbox-strategies";
 import CONFIG from "./globals/config";
-// import CacheHelper from "./utils/cache-helper";
 
 setCacheNameDetails({
   prefix: CONFIG.CACHE_NAME,
@@ -16,25 +15,6 @@ setCacheNameDetails({
 });
 
 precacheAndRoute(self.__WB_MANIFEST);
-
-registerRoute(
-  ({ request }) => request.mode === "navigate",
-  new NetworkFirst({ cacheName: `${CONFIG.CACHE_NAME}-network` })
-);
-
-// registerRoute(
-//   /^https:\/\/restaurant-api\.dicoding\.dev\/(?:(list|detail))/,
-//   new StaleWhileRevalidate({
-//     cacheName: "dicoding-api-restaurant-cache",
-//     plugins: [
-//       new CacheableResponsePlugin({ statuses: [200] }),
-//       new ExpirationPlugin({
-//         maxEntries: 100,
-//         maxAgeSeconds: 60 * 60 * 24 * 7
-//       })
-//     ],
-//   })
-// );
 
 registerRoute(
   ({ request }) =>
@@ -85,19 +65,3 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
-
-// const { assets } = global.serviceWorkerOption;
-
-// self.addEventListener("install", (event) => {
-//   console.log("Installing Service Worker");
-//   event.waitUntil(CacheHelper.cachingAppShell([...assets, "./"]));
-// });
-
-// self.addEventListener("activate", (event) => {
-//   console.log("Activating Service Worker");
-//   event.waitUntil(CacheHelper.deleteOldCache());
-// });
-
-// self.addEventListener("fetch", (event) => {
-//   event.respondWith(CacheHelper.revalidateCache(event.request));
-// });
