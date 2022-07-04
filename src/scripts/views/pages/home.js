@@ -3,6 +3,8 @@ import {
   createRestaurantContainerTemplate,
   createFoodContainerTemplate,
   createFailedLoadItemTemplate,
+  createSkeletonRestoLoadedTemplate,
+  createSkeletonFoodLoadedTemplate,
 } from "../templates/template-creator";
 
 const Home = {
@@ -15,22 +17,19 @@ const Home = {
         
       <div class="main-container">
         <h1 class="mb1 p1">Explore Restaurant</h1>
+        <section class="restaurant px-2">
+          ${createSkeletonRestoLoadedTemplate(12)}
+        </section>
         
-        <div class="loader-wrapper">
-          <div class="loader"></div>
-        </div>
-
-        <section class="restaurant px-2"></section>
-
         <h1 class="mt2 mb1 p1">Foods</h1>        
-        <section class="food p2"></section>
+        <section class="food p2">
+          ${createSkeletonFoodLoadedTemplate(7)}
+        </section>
       </div>
-
-    `;
+        `;
   },
 
   async afterRender() {
-    const loader = document.querySelector(".loader-wrapper");
     const restaurantList = await RestaurantData.restaurantList();
     const foodList = await RestaurantData.foodList();
     const { restaurants } = restaurantList;
@@ -39,15 +38,16 @@ const Home = {
     const foodContainer = document.querySelector(".food");
 
     try {
+      restoContainer.innerHTML = "";
       restaurants.forEach((resto) => {
         restoContainer.innerHTML += createRestaurantContainerTemplate(resto);
       });
 
+      foodContainer.innerHTML = "";
       feed.forEach((food) => {
         foodContainer.innerHTML += createFoodContainerTemplate(food);
         feed.splice(2, 1);
       });
-      loader.style.display = "none";
     } catch (error) {
       restoContainer.innerHTML = createFailedLoadItemTemplate();
       foodContainer.innerHTML = createFailedLoadItemTemplate();

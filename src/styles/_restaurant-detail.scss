@@ -35,13 +35,21 @@ review-container {
       align-items: center;
       justify-content: space-between;
       line-height: 3em;
-      h2 {
+      .details__name {
         font-size: 1.7em;
       }
       .like {
+        width: 3em;
+        height: 3em;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        &:focus {
+          outline: black solid 2px;
+        }
         img {
-          width: 1.5em;
+          width: 30px;
+          height: 30px;
         }
       }
     }
@@ -70,7 +78,7 @@ review-container {
         align-items: center;
         gap: 10px;
         img {
-          width: 1rem;
+          width: 1.2rem;
         }
       }
     }
@@ -178,13 +186,13 @@ review-container {
       #review {
         border: none;
         border-radius: 10px;
-        padding: 0.5rem;
+        padding: 1rem;
         font-size: 1rem;
         font-family: "Poppins", sans-serif;
       }
       #reviewSendButton {
         border-radius: 15px;
-        padding: 1rem 2rem;
+        padding: 1.3rem 2rem;
         color: $white-color;
         background-color: #009dff;
         width: -moz-fit-content;
@@ -214,6 +222,9 @@ review-container {
           p {
             transform: translateX(5em);
           }
+        }
+        &:focus {
+          outline: $black-color solid 2px;
         }
         &:active {
           transform: scale(0.9);

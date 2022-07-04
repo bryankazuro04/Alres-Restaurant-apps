@@ -1,11 +1,10 @@
 .skip-to-content {
-  border: 0.25em solid #b0e2ff;
+  border: 0.25em solid $black-color;
   border-radius: 3rem;
   padding: 1rem 2rem;
-  color: $white-color;
-  text-shadow: 0 0 10px $white-color;
+  text-shadow: 0 0 10px $black-color;
   position: fixed;
-  background-color: #6b6b6b;
+  background-color: #b0e2ff;
   top: -100px;
   left: 50%;
   transform: translateX(-50%);

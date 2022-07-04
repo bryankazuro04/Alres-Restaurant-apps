@@ -31,7 +31,6 @@
           font-size: 1.35rem;
         }
         .details__sub {
-          margin-top: 1rem;
           margin-bottom: 1ex;
           color: rgba($color: $black-color, $alpha: 0.7);
           display: flex;
@@ -39,6 +38,7 @@
           .details__sub-location {
             font-size: 1.15rem;
             display: flex;
+            align-items: center;
             gap: 5px;
             img {
               width: 0.9rem;
@@ -48,6 +48,7 @@
             font-size: 1.25em;
             font-weight: bold;
             display: flex;
+            align-items: center;
             gap: 5px;
             .rating-icon {
               width: 1.25rem;

@@ -7,13 +7,12 @@ import {
   createLoaderTemplate,
   createFailedLoadItemTemplate,
 } from "../templates/template-creator";
-import LikeButtonInitiator from "../../utils/like-button-initiator";
+import LikeButtonPresenter from "../../utils/like-button-presenter";
 import addReviewHelper from "../../utils/add-review-helper";
 
 const Detail = {
   async render() {
     return `
-
     <restaurant-detail>
       <div class="loader-wrapper"></div>
       <section class="restaurant__container"></section>
@@ -22,7 +21,7 @@ const Detail = {
 
     <review-container>
       <div class="loader-wrapper"></div>
-      <section class="review__container-list">
+      <section class="review__container-list" tabindex="0">
         <h2>Reviews</h2>
         <review-list></review-list>
       </section>
@@ -50,7 +49,7 @@ const Detail = {
       restoContainer.innerHTML += createRestaurantDetailTemplate(restaurant);
       menuContainer.innerHTML += createMenuTemplate(restaurant.menus);
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector(".button-like"),
         restaurant: {
           id: restaurant.id,
