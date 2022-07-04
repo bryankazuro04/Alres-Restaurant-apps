@@ -7,9 +7,13 @@ Before(({ I }) => {
 });
 
 Scenario("reviewing one restaurant", async({ I }) => {
-  I.waitForElement("restaurant-list restaurant-item");
-  I.click(locate("restaurant-item").first());
-  I.waitForElement("#formAddNewReview");
+  I.wait(7);
+  I.seeElement(".restaurant-list a");
+  I.wait(3);
+  const firstRestaurant = await locate(".restaurant-list a").first();
+  I.click(firstRestaurant);
+  I.wait(7);
+  I.waitForElement(".review__form");
 
   const name = "Muhammad Alana Fauzan";
   const review = "This is so cool";
@@ -19,19 +23,21 @@ Scenario("reviewing one restaurant", async({ I }) => {
   I.seeElement("[name=review]");
   I.fillField("[name=review]", review);
 
+  I.wait(5);
   I.seeElement("#reviewSendButton");
   I.click("#reviewSendButton");
 
   I.refreshPage();
 
-  I.waitForElement("#restaurantReviews");
+  I.wait(5);
+  I.seeElement("review-item");
 
   const lastReview = locate("review-item").last();
   const reviewerName = await I.grabTextFrom(lastReview.find(".review__name"));
-  const reviewerMessage = await I.grabTextFrom(
+  const reviewerComment = await I.grabTextFrom(
     lastReview.find(".review__commmentor")
   );
 
   assert.strictEqual(name, reviewerName);
-  assert.strictEqual(review, reviewerMessage);
+  assert.strictEqual(review, reviewerComment);
 });

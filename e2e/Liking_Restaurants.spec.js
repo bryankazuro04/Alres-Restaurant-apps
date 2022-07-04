@@ -4,23 +4,31 @@ const likingRestaurants = async({ I }) => {
   I.see("No restaurant you like yet", ".no-restaurant-favorite");
 
   I.amOnPage("/");
-  I.seeElement("ristorante-list a");
-
-  const firstRestaurant = locate("ristorante-list a").first();
-  I.click(firstRestaurant);
+  I.wait(7);
+  I.seeElement(".restaurant-list a");
+  const firstRestaurant = locate(".restaurant-list a").first();
   const firstRestaurantTitle = await I.grabTextFrom(
-    firstRestaurant.find(".details__name")
+    firstRestaurant.find(".details .details__name")
   );
+  I.wait(5);
+  I.click(firstRestaurant);
 
-  I.seeElement("#likeButton");
-  I.click("#likeButton");
+  const detailRestaurant = await locate(
+    ".restaurant__container .restaurant__container-detail .detail__header .button-like"
+  );
+  I.wait(5);
+  I.seeElement(detailRestaurant);
 
+  const likeButton = await locate(detailRestaurant.find("#likeButton"));
+  I.wait(3);
+  I.click(likeButton);
+
+  I.wait(3);
   I.amOnPage("/#/favorite-restaurants");
-  I.seeElement("ristorante-list");
+  I.wait(5);
+  I.seeElement(".restaurant-list a");
 
-  const likedRestaurant = await I.grabTextFrom(
-    "ristorante-list .details__name"
-  );
+  const likedRestaurant = await I.grabTextFrom(".details .details__name");
   assert.strictEqual(firstRestaurantTitle, likedRestaurant);
 };
 
