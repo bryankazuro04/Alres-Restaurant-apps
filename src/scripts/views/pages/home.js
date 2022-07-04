@@ -17,17 +17,16 @@ const Home = {
         
       <div class="main-container">
         <h1 class="mb1 p1">Explore Restaurant</h1>
-
         <section class="restaurant px-2">
           ${createSkeletonRestoLoadedTemplate(12)}
         </section>
-
+        
         <h1 class="mt2 mb1 p1">Foods</h1>        
         <section class="food p2">
           ${createSkeletonFoodLoadedTemplate(7)}
         </section>
       </div>
-    `;
+        `;
   },
 
   async afterRender() {
