@@ -17,10 +17,7 @@ setCacheNameDetails({
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
-  ({ request }) =>
-  request.destination === "style" ||
-  request.destination === "script" ||
-  request.destination === "worker",
+  ({ request }) => request.destination === "style" || request.destination === "script" || request.destination === "worker",
   new StaleWhileRevalidate({
     cacheName: `${CONFIG.CACHE_NAME}-assets`,
     plugins: [new CacheableResponsePlugin({ statuses: [200] })],
@@ -42,10 +39,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) =>
-  url.origin === "https://fonts.googleapis.com" ||
-  url.origin === "https://restaurant-api.dicoding.dev" ||
-  url.origin === "https://yummly2.p.rapidapi.com",
+  ({ url }) => url.origin === "https://fonts.googleapis.com" || url.origin === "https://restaurant-api.dicoding.dev" || url.origin === "https://yummly2.p.rapidapi.com",
   new StaleWhileRevalidate({
     cacheName: "API-cache",
     plugins: [
