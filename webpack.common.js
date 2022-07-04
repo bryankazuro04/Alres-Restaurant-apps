@@ -3,13 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozjpeg = require("imagemin-mozjpeg");
-const { GenerateSW } = require("workbox-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   entry: {
     index: path.resolve(__dirname, "src/scripts/index.js"),
     event: path.resolve(__dirname, "src/scripts/event.js"),
+    sw: path.resolve(__dirname, "src/scripts/sw.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -49,7 +50,8 @@ module.exports = {
         }),
       ],
     }),
-    new GenerateSW({
+    new InjectManifest({
+      swSrc: path.resolve(__dirname, "src/scripts/sw.js"),
       swDest: "sw.js",
     }),
     new BundleAnalyzerPlugin(),
