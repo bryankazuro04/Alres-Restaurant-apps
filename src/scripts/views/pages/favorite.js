@@ -23,11 +23,13 @@ const Favorite = {
     const emptyRestaurant = document.querySelector(".no-restaurant-favorite");
 
     try {
-      emptyRestaurant.innerHTML =
-        '<h1 class="no-restaurant-favorite">Favorite Restaurant</h1>';
+      emptyRestaurant.innerHTML = `
+        <h1 class="no-restaurant-favorite">Favorite Restaurant</h1>
+        `;
       if (restoFav.length <= 0) {
-        emptyRestaurant.innerHTML =
-          '<h1 class="no-restaurant-favorite">No restaurant you like yet</h1>';
+        emptyRestaurant.innerHTML = `
+          <h1 class="no-restaurant-favorite">No restaurant you like yet</h1>
+          `;
       }
       loader.innerHTML = createLoaderTemplate();
       restoFav.forEach((resto) => {

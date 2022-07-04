@@ -21,6 +21,7 @@ const FavoriteRestaurantDB = {
   },
 
   async putResto(resto) {
+    /* eslint-disable-next-line no-prototype-builtins */
     if (!resto.hasOwnProperty("id")) {
       return;
     }
