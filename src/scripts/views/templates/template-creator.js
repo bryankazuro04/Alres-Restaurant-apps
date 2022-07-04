@@ -50,13 +50,13 @@ const createRestaurantDetailTemplate = (resto) => `
 
     <div class="detail__place">
       <div class="detail__place-address">
-        <img src="/icons/location-dot-solid.svg" alt="Location Tag">
+        <img src="/icons/location-dot-solid.svg" alt="Location Tag" width="44px" height="44px">
         <h4>${resto.city},</h4>
         <h4>${resto.address}</h4>
       </div>
 
       <div class="detail__place-rating">
-        <img src="/icons/star-solid.svg" alt="Star Rating">
+        <img src="/icons/star-solid.svg" alt="Star Rating" width="44px" height="44px">
         <span>${resto.rating}</span>
       </div>  
     </div>
@@ -69,7 +69,7 @@ const createRestaurantDetailTemplate = (resto) => `
       ${resto.categories
         .map(
           (category) =>
-            `<img src="/icons/tag-solid.svg" alt="Tag Category"> <span>${category.name}</span>`
+            `<img src="/icons/tag-solid.svg" alt="Tag Category" width="44px" height="44px"> <span>${category.name}</span>`
         )
         .join("")}
       </div>
@@ -103,7 +103,7 @@ const createReviewFormTemplate = (id) => `
   <label for="review">Review</label>
   <textarea name="review" id="review" cols="30" rows="10" placeholder="Fill with your review message" required></textarea>
 
-  <button type="submit" id="reviewSendButton" aria-label="Submit button for send review"><img src="/icons/paper-plane-solid.svg" alt="Send Icon"><p>Post</p></button>
+  <button type="submit" id="reviewSendButton" aria-label="Submit button for send review"><img src="/icons/paper-plane-solid.svg" alt="Send Icon" width="44px" height="44px"><p>Post</p></button>
 `;
 
 const createLoaderTemplate = () => `
@@ -112,13 +112,13 @@ const createLoaderTemplate = () => `
 
 const createLikeRestaurantButtonTemplate = () => `
   <button id="likeButton" class="like" aria-label="like this restaurant" >
-    <img src="/icons/heart-regular.svg" alt="Like Icon">
+    <img src="/icons/heart-regular.svg" alt="Like Icon" width="44px" height="44px" >
   </button>
 `;
 
 const createUnlikeRestaurantButtonTemplate = () => `
   <button id="likeButton" class="like" aria-label="unlike this restaurant">
-    <img src="/icons/heart-solid.svg" alt="Liked Icon">
+    <img src="/icons/heart-solid.svg" alt="Liked Icon" width="44px" height="44px">
   </button>
 `;
 
@@ -136,7 +136,7 @@ const createSkeletonRestoLoadedTemplate = (skeleton) => {
   for (let i = 0; i < skeleton; i += 1) {
     skeletonContainer += `
       <ristorante-list>
-        <img src="/icons/image-loader.png" alt="Restaurant loader" class="skeleton restaurant-thumbnail"></img>
+        <img src="/icons/image-loader.png" alt="Restaurant loader" class="skeleton restaurant-thumbnail" width="44px" height="44px"></img>
 
         <div class="details p1 px-2">
           <h2 class="skeleton skeleton__text skeleton__text-header"></h2>
@@ -161,7 +161,7 @@ const createSkeletonFoodLoadedTemplate = (skeleton) => {
   for (let i = 0; i <= skeleton; i += 1) {
     skeletonContainer += `
       <food-list>
-        <img src="/icons/image-loader.png" alt="Food Loader" class="skeleton">
+        <img src="/icons/image-loader.png" alt="Food Loader" class="skeleton" width="44px" height="44px">
 
         <h2 class="skeleton skeleton__text skeleton__text-header p1 mb1"></h2>
       </food-list>
