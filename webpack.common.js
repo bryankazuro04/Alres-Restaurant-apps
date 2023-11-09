@@ -9,7 +9,7 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
   entry: {
     index: path.resolve(__dirname, "src/scripts/index.js"),
-    event: path.resolve(__dirname, "src/scripts/event.js"),
+    event: path.resolve(__dirname, "src/scripts/Event.js"),
     sw: path.resolve(__dirname, "src/scripts/sw.js"),
   },
   output: {
@@ -17,19 +17,22 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   module: {
-    rules: [{
-      test: /\.s[ac]ss$/i,
-      use: [{
-          loader: "style-loader",
-        },
-        {
-          loader: "css-loader",
-        },
-        {
-          loader: "sass-loader",
-        },
-      ],
-    }, ],
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -37,10 +40,12 @@ module.exports = {
       filename: "index.html",
     }),
     new CopyWebpackPlugin({
-      patterns: [{
-        from: path.resolve(__dirname, "src/public/"),
-        to: path.resolve(__dirname, "dist/"),
-      }, ],
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/public/"),
+          to: path.resolve(__dirname, "dist/"),
+        },
+      ],
     }),
     new ImageminWebpackPlugin({
       plugins: [
