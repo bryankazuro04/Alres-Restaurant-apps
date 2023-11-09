@@ -1,0 +1,20 @@
+{
+  "name": "Alres",
+  "short_name": "Alres",
+  "description": "Restoran Alres. Memberikan catalog restoran yang sangat direkomendasikan untuk dikunjungi",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ebebeb",
+  "theme_color": "#3b7792",
+  "icons": [{
+      "src": "icons/favicon.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/favicon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}
